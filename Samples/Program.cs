@@ -1,9 +1,10 @@
-﻿using Samples.Decorator;
+﻿
+using Samples.Decorator;
 
-Samples.Decorator.Component component = new ConcreteComponent();
-Decorator decoratorA = new ConcreteDecoratorA();
-Decorator decoratorB = new ConcreteDecoratorB();
+IMessageWriter writer = new ConsoleMessageWriter();
+IMessageWriter capitalizedWriter = new MessageCapitalizer(writer);
+IMessageWriter redCapitalizedWriter = new RedConsoleMessageWriter(capitalizedWriter);
 
-decoratorA.Component = component;
-decoratorB.Component = decoratorA;
-decoratorB.Operation();
+writer.Write("Hello, World!");
+capitalizedWriter.Write("Hello, World!");
+redCapitalizedWriter.Write("Hello, World!");
