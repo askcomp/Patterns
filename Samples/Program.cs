@@ -1,10 +1,8 @@
-﻿
-using Samples.Decorator;
+﻿using Samples.Decorator;
 
-IMessageWriter writer = new ConsoleMessageWriter();
-IMessageWriter capitalizedWriter = new MessageCapitalizer(writer);
-IMessageWriter redCapitalizedWriter = new RedConsoleMessageWriter(capitalizedWriter);
+Func<string, string> core = MessageProcessors.WriteToConsole;
+Func<string, string> decorated = MessageDecorators.Capitalize(core);
+decorated = MessageDecorators.RedColor(decorated);
+decorated = MessageDecorators.AddPrefix(decorated, "[LOG]");
 
-writer.Write("Hello, World!");
-capitalizedWriter.Write("Hello, World!");
-redCapitalizedWriter.Write("Hello, World!");
+decorated("Hello, World!");
