@@ -1,2 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Samples.Decorator;
+
+Samples.Decorator.Component component = new ConcreteComponent();
+Decorator decoratorA = new ConcreteDecoratorA();
+Decorator decoratorB = new ConcreteDecoratorB();
+
+decoratorA.Component = component;
+decoratorB.Component = decoratorA;
+decoratorB.Operation();
