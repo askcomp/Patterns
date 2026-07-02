@@ -1,4 +1,6 @@
 ﻿namespace Samples.Decorator;
+
+// Декоратор 2: Окрашивание текста в консоли в красный цвет
 internal class RedConsoleMessageWriter(IMessageWriter messageWriter) : IMessageWriter
 {
     private readonly IMessageWriter _messageWriter = messageWriter;
